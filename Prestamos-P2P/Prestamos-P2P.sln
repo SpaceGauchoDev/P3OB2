@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1267
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Presentacion", "MVC_Presentacion\MVC_Presentacion.csproj", "{7AAAF423-654A-4771-BCD2-0F4FEFC856CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{83D2DDAD-6BE2-4B34-993C-801570CE3CDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{6CDABD0E-638C-4077-9E9C-CAF0858F39C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AAAF423-654A-4771-BCD2-0F4FEFC856CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AAAF423-654A-4771-BCD2-0F4FEFC856CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AAAF423-654A-4771-BCD2-0F4FEFC856CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AAAF423-654A-4771-BCD2-0F4FEFC856CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83D2DDAD-6BE2-4B34-993C-801570CE3CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D2DDAD-6BE2-4B34-993C-801570CE3CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D2DDAD-6BE2-4B34-993C-801570CE3CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D2DDAD-6BE2-4B34-993C-801570CE3CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CDABD0E-638C-4077-9E9C-CAF0858F39C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CDABD0E-638C-4077-9E9C-CAF0858F39C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CDABD0E-638C-4077-9E9C-CAF0858F39C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CDABD0E-638C-4077-9E9C-CAF0858F39C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26736B68-8E52-4A33-8239-305630D38E87}
+	EndGlobalSection
+EndGlobal
