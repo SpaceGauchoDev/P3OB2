@@ -128,10 +128,21 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeInversorController.cs" />
+    <Compile Include="Controllers\HomeSinRegistrarController.cs" />
+    <Compile Include="Controllers\HomeSolicitanteController.cs" />
+    <Compile Include="Controllers\ImportarProyectosController.cs" />
+    <Compile Include="Controllers\ImportarUsuariosController.cs" />
+    <Compile Include="Controllers\InversorRegistrationController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FileUploadModel.cs" />
+    <Compile Include="Models\InversorRegistrationModel.cs" />
+    <Compile Include="Models\LoginDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TiposDeUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -169,10 +180,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\HomeSinRegistrar\VerHomeSinRegistrar.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\InversorRegistration\Index.cshtml" />
+    <Content Include="Views\ImportarUsuarios\Index.cshtml" />
+    <Content Include="Views\ImportarProyectos\Index.cshtml" />
+    <Content Include="Views\HomeInversor\VerHomeInversor.cshtml" />
+    <Content Include="Views\HomeSolicitante\VerHomeSolicitante.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -186,6 +203,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{83d2ddad-6be2-4b34-993c-801570ce3cdb}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{6cdabd0e-638c-4077-9e9c-caf0858f39c5}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

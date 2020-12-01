@@ -39,11 +39,13 @@ namespace Dominio.Entidades
         [Required]
         public string Email { get; set; }
 
+        //TODOMDA: Hacer celular un dato requerido, data-migrations, re hacer database 
         public string Cell { get; set; }
 
         // metodos usuario 
         // ===============
 
+        /*
         public virtual bool Validar()
         {
             bool result = false;
@@ -65,21 +67,138 @@ namespace Dominio.Entidades
 
             return result;
         }
+        */
+
+        public struct DatosValidacion
+        {
+            public string Nombre { get; set; }
+            public string Apellido { get; set; }
+            public string Ci { get; set; }
+            public string Email { get; set; }
+            public string Cell { get; set; }
+            public string Pass { get; set; }
+            public DateTime FechaDeNacimiento { get; set; }
+        }
+
+        public struct ResultadoValidacion
+        {
+            public string Mensaje { get; set; }
+            public bool Resultado { get; set; }
+        }
+
+        public virtual ResultadoValidacion Validar(DatosValidacion pDatosValidacion)
+        {
+            ResultadoValidacion result = new ResultadoValidacion();
+            bool registroValido = true;
+            string mensaje = "";
+
+            if (!ValidarCI(pDatosValidacion.Ci))
+            {
+                mensaje += "CI invalida";
+                registroValido = false;
+            }
+
+            if (!ValidarNombreYApellido(pDatosValidacion.Nombre, pDatosValidacion.Apellido))
+            {
+                if (registroValido)
+                {
+                    mensaje += "Nombre y/o Apellido invalidos";
+                }
+                else
+                {
+                    mensaje += ", nombre y/o Apellido invalidos";
+                }
+                registroValido = false;
+            }
+
+            if (!ValidarEmail(pDatosValidacion.Email))
+            {
+                if (registroValido)
+                {
+                    mensaje += "Email invalido";
+                }
+                else
+                {
+                    mensaje += ", email invalido";
+                }
+                registroValido = false;
+            }
+
+            if (!ValidarCelular(pDatosValidacion.Cell))
+            {
+                if (registroValido)
+                {
+                    mensaje += "Celular invalido";
+                }
+                else
+                {
+                    mensaje += ", celular invalido";
+                }
+                registroValido = false;
+            }
+
+            if (!ValidarEdad(pDatosValidacion.FechaDeNacimiento))
+            {
+                if (registroValido)
+                {
+                    mensaje += "Edad invalida";
+                }
+                else
+                {
+                    mensaje += ", edad invalida";
+                }
+                registroValido = false;
+            }
+
+            result.Mensaje = mensaje;
+            result.Resultado = registroValido;
+
+            return result;
+        }
+
+        public virtual bool ValidarContrasenia(string pPass)
+        {
+            bool result = false;
+            // mínimo 6 dígitos, incluirá al menos una mayúscula, una minúscula, y un dígito
+            
+            // source https://regexlib.com/REDetails.aspx?regexp_id=31
+            string regexPattern = "^(?=.*[0-1])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
+
+            result = Regex.IsMatch(pPass, regexPattern);
+            return result;
+        }
+
+        public virtual bool ValidarCelular(string pCell)
+        {
+            // formato 09X YYYYYY , siendo X un dígito entre 1 y 9, y los Y son dígitos cualesquiera
+            bool result = true;
+
+            if (result && pCell.Length != 9)
+            {
+                result = false;
+            }
+
+            if (result &&  pCell.Substring(0, 2) != "09")
+            {
+                result = false;
+            }
+
+            if (result)
+            {
+                string segundaParte = pCell.Substring(2, 7);
+                string regexPattern = "[^0-9]";
+                result = !Regex.IsMatch(segundaParte, regexPattern);
+            }
+
+            return result;
+        }
 
         public virtual bool ValidarNombreYApellido(string pNom, string pApellido)
         {
             bool result = true;
 
-            //TODO: verificar validacion de email
-
             // validamos que nombre y apellido no sean vacíos
             if (pNom == "" && pApellido == "")
-            {
-                result = false;
-            }
-
-            // validamos que nombre y apellido no se pasen del limite de caracteres en DB
-            if (pNom.Length > 30 && pApellido.Length > 50)
             {
                 result = false;
             }
@@ -100,6 +219,7 @@ namespace Dominio.Entidades
             return result;
         }
 
+        /*
         public virtual bool ValidarCI(int pCI)
         {
             string CIString = pCI.ToString();
@@ -116,7 +236,33 @@ namespace Dominio.Entidades
             // comparamos el digito verificador provisto con el digito verificador calculado
             return (Int32.Parse(digitoVerificador.ToString()) == digitoCalculado);
         }
+        */
 
+        public virtual bool ValidarEdad(DateTime pFechaDeNacimiento)
+        {
+            // solicitantes: "Para solicitar un préstamo debe tener al menos 21 años"
+            // inversores: "Ingresará su fecha de nacimiento - ellos también deben tener al menos 21 años"
+
+            DateTime today = DateTime.Today;
+            int age = today.Year - pFechaDeNacimiento.Year;
+
+            return age >= 21;
+        }
+
+        public virtual bool ValidarCI(string pCI)
+        {
+            // obtenemos el digito verificador
+            var digitoVerificador = pCI[pCI.Length - 1];
+
+            // obtenemos el numero
+            var primerParte = pCI.Substring(0, pCI.Length - 1);
+
+            // calculamos el digito verificador a partir del numero
+            int digitoCalculado = CalcularDigitoVerificador(primerParte);
+
+            // comparamos el digito verificador provisto con el digito verificador calculado
+            return (Int32.Parse(digitoVerificador.ToString()) == digitoCalculado);
+        }
 
         private int CalcularDigitoVerificador(string pCI)
         {
