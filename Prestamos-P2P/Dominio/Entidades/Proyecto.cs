@@ -35,6 +35,7 @@ namespace Dominio.Entidades
         public string ImgURL { get; set; }
 
         [Required]
+        [Column(TypeName = "Date")]
         public DateTime FechaDePresentacion { get; set; }
 
         // properties proyecto - cooperativo

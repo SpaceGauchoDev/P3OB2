@@ -13,7 +13,7 @@
                     {
                         IdFinanciacion = c.Int(nullable: false, identity: true),
                         Monto = c.Double(nullable: false),
-                        Fecha = c.DateTime(nullable: false),
+                        Fecha = c.DateTime(nullable: false, storeType: "date"),
                         IdInversor = c.Int(nullable: false),
                         IdProyecto = c.Int(nullable: false),
                     })
@@ -33,9 +33,9 @@
                         Nombre = c.String(nullable: false),
                         Apellido = c.String(nullable: false),
                         Pass = c.String(nullable: false),
-                        FechaDeNacimiento = c.DateTime(nullable: false),
+                        FechaDeNacimiento = c.DateTime(nullable: false, storeType: "date"),
                         Email = c.String(nullable: false),
-                        Cell = c.String(),
+                        Cell = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.IdUsuario);
             
@@ -49,7 +49,7 @@
                         Titulo = c.String(nullable: false),
                         Descripcion = c.String(nullable: false),
                         ImgURL = c.String(nullable: false),
-                        FechaDePresentacion = c.DateTime(nullable: false),
+                        FechaDePresentacion = c.DateTime(nullable: false, storeType: "date"),
                         CantidadDeIntegrantes = c.Int(nullable: false),
                         ExperienciaPersonal = c.String(),
                         Cuotas = c.Int(nullable: false),
@@ -71,9 +71,9 @@
                         Nombre = c.String(nullable: false),
                         Apellido = c.String(nullable: false),
                         Pass = c.String(nullable: false),
-                        FechaDeNacimiento = c.DateTime(nullable: false),
+                        FechaDeNacimiento = c.DateTime(nullable: false, storeType: "date"),
                         Email = c.String(nullable: false),
-                        Cell = c.String(),
+                        Cell = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.IdUsuario);
             

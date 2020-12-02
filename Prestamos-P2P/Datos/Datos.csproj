@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202012010316019_initDb.cs" />
-    <Compile Include="Migrations\202012010316019_initDb.designer.cs">
-      <DependentUpon>202012010316019_initDb.cs</DependentUpon>
+    <Compile Include="Migrations\202012011949141_initDb.cs" />
+    <Compile Include="Migrations\202012011949141_initDb.designer.cs">
+      <DependentUpon>202012011949141_initDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Prestamos_P2P_Context.cs" />
@@ -70,8 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202012010316019_initDb.resx">
-      <DependentUpon>202012010316019_initDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012011949141_initDb.resx">
+      <DependentUpon>202012011949141_initDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

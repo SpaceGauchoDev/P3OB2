@@ -34,12 +34,13 @@ namespace Dominio.Entidades
         */
 
         [Required]
+        [Column(TypeName = "Date")]
         public DateTime FechaDeNacimiento { get; set; }
 
         [Required]
         public string Email { get; set; }
 
-        //TODOMDA: Hacer celular un dato requerido, data-migrations, re hacer database 
+        [Required]
         public string Cell { get; set; }
 
         // metodos usuario 

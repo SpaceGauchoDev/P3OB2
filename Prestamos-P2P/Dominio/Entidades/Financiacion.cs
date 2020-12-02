@@ -16,6 +16,7 @@ namespace Dominio.Entidades
         [Required]
         public double Monto { get; set; }
         [Required]
+        [Column(TypeName = "Date")]
         public DateTime Fecha { get; set; }
 
         // navegacion
