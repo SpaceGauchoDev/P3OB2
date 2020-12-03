@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio.Entidades;
 using Datos.Repositorios;
+using System.Text.RegularExpressions;
 
 namespace TestingConsole
 {
@@ -45,12 +46,39 @@ namespace TestingConsole
 
             //ParsearFecha("1991-02-17 12:00:00 AM");
 
-            ProbarAgregarInversor();
+            //ProbarAgregarInversor();
 
             //ProbarBuscarInversor(42935324);
 
+            //ProbarBuscarInversorPorEmail("manucaca@gmail.com");
+            //ProbarBuscarInversorPorEmail("puto@gmail.com");
+
+            //ProbarBuscarSolicitantePorEmail("gordon@gmail.com");
+            //ProbarBuscarSolicitantePorEmail("puto@gmail.com");
+
+            ProbaRegEx("manu1502");
+
             Console.WriteLine("End");
             Console.ReadLine();
+        }
+
+
+        public static void ProbaRegEx(string s)
+        {
+            bool result = false;
+
+            /*
+            // source: https://www.rhyous.com/2010/06/15/csharp-email-regular-expression/
+            string regexPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                    + "@"
+                                    + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))\z";
+            */
+
+            // source: https://regexr.com/3e48o
+            string regexPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+            result = Regex.IsMatch(s, regexPattern);
+
+            Console.WriteLine(s + " verifica regex: " + result);
         }
 
 
@@ -70,6 +98,21 @@ namespace TestingConsole
         }
 
 
+        public static void ProbarBuscarSolicitantePorEmail(string email)
+        {
+            RepositorioSolicitante rS = new RepositorioSolicitante();
+            bool s = rS.ExistsByEmail(email);
+
+            Console.WriteLine("Existe " + email + " solicitante: " + s);
+        }
+
+        public static void ProbarBuscarInversorPorEmail(string email)
+        {
+            RepositorioInversor rI = new RepositorioInversor();
+            bool i = rI.ExistsByEmail(email);
+
+            Console.WriteLine("Existe "+ email +" inversor: " + i);
+        }
 
         public static void ProbarAgregarInversor()
         {

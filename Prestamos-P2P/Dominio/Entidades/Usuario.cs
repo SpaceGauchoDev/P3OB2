@@ -56,11 +56,36 @@ namespace Dominio.Entidades
             bool result = false;
 
             result = ValidarCI(IdUsuario.ToString());
-            result = ValidarNombreYApellido(Nombre, Apellido);
-            result = ValidarEmail(Email);
-            result = ValidarCelular(Cell);
-            result = ValidarContrasenia(Pass);
-            result = ValidarEdad(FechaDeNacimiento);
+
+            if (result)
+            {
+                result = ValidarNombreYApellido(Nombre, Apellido);
+            }
+
+            if (result)
+            {
+                result = ValidarNombreYApellido(Nombre, Apellido);
+            }
+
+            if (result)
+            {
+                result = ValidarEmail(Email);
+            }
+
+            if (result)
+            {
+                result = ValidarCelular(Cell);
+            }
+
+            if (result)
+            {
+                result = ValidarContrasenia(Pass);
+            }
+
+            if (result)
+            {
+                result = ValidarEdad(FechaDeNacimiento);
+            }
 
             return result;
         }
@@ -221,10 +246,8 @@ namespace Dominio.Entidades
         {
             bool result = false;
 
-            // source https://www.rhyous.com/2010/06/15/csharp-email-regular-expression/
-            string regexPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-                                    + "@"
-                                    + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))\z";
+            // source: https://regexr.com/3e48o
+            string regexPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
             result = Regex.IsMatch(pEmail, regexPattern);
             return result;

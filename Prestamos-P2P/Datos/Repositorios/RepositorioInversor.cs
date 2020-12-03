@@ -54,6 +54,32 @@ namespace Datos.Repositorios
             }
         }
 
+        public bool ExistsByEmail(string email)
+        {
+            try
+            {
+                using (Prestamos_P2P_Context db = new Prestamos_P2P_Context())
+                {
+                    var existe = db.Inversores.Count(p => p.Email == email);
+
+                    if (existe == 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
+
+
         public bool Remove(object id)
         {
             throw new NotImplementedException();

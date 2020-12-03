@@ -59,6 +59,7 @@
     <Compile Include="Prestamos_P2P_Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\RepositorioInversor.cs" />
+    <Compile Include="Repositorios\RepositorioProyecto.cs" />
     <Compile Include="Repositorios\RepositorioSolicitante.cs" />
   </ItemGroup>
   <ItemGroup>

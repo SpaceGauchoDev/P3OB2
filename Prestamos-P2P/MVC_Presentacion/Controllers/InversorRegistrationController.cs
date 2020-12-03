@@ -5,49 +5,67 @@ using System.Web;
 using System.Web.Mvc;
 using MVC_Presentacion.Models;
 using Dominio.Entidades;
-
+using Datos.Repositorios;
 
 namespace MVC_Presentacion.Controllers
 {
     public class InversorRegistrationController : Controller
     {
+        
         // GET: InversorRegistration
         public ActionResult Index()
         {
             return View();
         }
-
+        
 
         [HttpPost]
         public ActionResult Index(InversorRegistrationModel pRegistrationData)
         {
-            Inversor inversor = new Inversor();
-            Inversor.DatosValidacion datosIngresados = new Inversor.DatosValidacion();
-            datosIngresados.Nombre = pRegistrationData.Nombre;
-            datosIngresados.Apellido = pRegistrationData.Apellido;
-            datosIngresados.Ci = pRegistrationData.NombreDeUsuario;
-            datosIngresados.Email = pRegistrationData.Email;
-            datosIngresados.Cell = pRegistrationData.Cell;
-            datosIngresados.Pass = pRegistrationData.Pass;
-            datosIngresados.FechaDeNacimiento = pRegistrationData.FechaDeNacimiento;
+            RepositorioSolicitante rS = new RepositorioSolicitante();
+            RepositorioInversor rI = new RepositorioInversor();
 
-            Inversor.ResultadoValidacion resultadoValidacion = inversor.ValidarParaPresentacion(datosIngresados);
-
-            if (resultadoValidacion.Resultado)
+            Inversor inversor = new Inversor
             {
-                // TODOMDA: registrar datos en DB con el repositorio apropiado, volver a HomeSinRegistrar
-                // TODOMDA: mensaje de exito ??
-                //return RedirectToAction("Index", "VerHomeSinRegistrar");
+                IdUsuario = int.Parse(pRegistrationData.NombreDeUsuario),
+                Nombre = pRegistrationData.Nombre,
+                Apellido = pRegistrationData.Apellido,
+                Pass = pRegistrationData.Pass,
+                FechaDeNacimiento = pRegistrationData.FechaDeNacimiento,
+                Email = pRegistrationData.Email,
+                Cell = pRegistrationData.Cell,
+                TienePassTemporal = false,
+                MaxInvPorProyecto = pRegistrationData.MaxInvPorProyecto,
+                PresentacionInversor = pRegistrationData.PresentacionInversor
+            };
 
-                ViewData["Mensaje"] = "Validacion exitosa!";
+            if (rS.FindById(int.Parse(pRegistrationData.NombreDeUsuario)) != null)
+            {
+                ViewData["Mensaje"] = "Solicitante con misma CI ya existe en el sistema.";
+            }
+            else if (rS.ExistsByEmail(pRegistrationData.Email) || rI.ExistsByEmail(pRegistrationData.Email))
+            {
+                ViewData["Mensaje"] = "Usuario con el mismo Email ya existe en el sistema.";
+            }
+            else if (!inversor.ValidarParaRepositorio())
+            {
+                ViewData["Mensaje"] = "Uno o mas campos incorrectos.";
             }
             else
             {
-                ViewData["Mensaje"] = resultadoValidacion.Mensaje;
+                if (rI.Add(inversor))
+                {
+                    ViewData["Mensaje"] = "Inversor registrado correctamente.";
+                }
+                else
+                {
+                    ViewData["Mensaje"] = "Error de ingreso, intente nuevamente.";
+                }
             }
 
             return View();
         }
+
 
         public ActionResult VolverAHome()
         {

@@ -74,5 +74,86 @@ namespace Dominio.Entidades
         public Solicitante Solicitante { get; set; }
 
         public ICollection<Financiacion> Financiaciones { get; set; }
+
+        public bool ValidarParaRepositorio()
+        {
+            bool result = false;
+
+            // validamos que los valores monetarios sean positivos 
+            result = ValidarMontos(Cuotas, PrecioPorCuota, PorcentajeDeInteres, MontoConseguido);
+
+            // validamos que la composicion de los equipos cumpla con las reglas de negocio
+            result = (result && ValidarEquipo(TipoDeEquipo, CantidadDeIntegrantes, ExperienciaPersonal));
+
+            // validamos que el proyecto haya sido presentado por lo menos antes que hoy
+            result = (result && (FechaDePresentacion.Date <= DateTime.Today.Date));
+
+            // validamos el estado del proyecto en relacion a los montos
+            result = (result && (ValidarEstado(Estado, MontoSolicitado, MontoConseguido)));
+
+            return result;
+        }
+
+        public bool ValidarMontos(  int cuotas,
+                                    decimal precioPorCuota, 
+                                    decimal porcentaje,
+                                    decimal montoConseguido)
+        {
+            bool result = false;
+
+            result = (Cuotas >= 1);
+
+            result = (result && (PrecioPorCuota >= 0));
+
+            result = (result && (PorcentajeDeInteres >= 0));
+
+            result = (result && (MontoConseguido >= 0));
+
+            return result;
+        }
+
+        public bool ValidarEquipo(string tipoDeEquipo, int cantidadDeIntegrantes, string experiencia)
+        {
+            bool result = false;
+
+            result = (tipoDeEquipo == "P" || tipoDeEquipo == "C");
+
+            if (result && tipoDeEquipo == "P")
+            {
+                result = (cantidadDeIntegrantes == 1);
+            }
+
+            if (result && tipoDeEquipo == "P")
+            {
+                result = (experiencia != null && experiencia != "");
+            }
+
+            if (result && tipoDeEquipo == "C")
+            {
+                result = (cantidadDeIntegrantes > 1);
+            }
+
+            return result;
+        }
+
+        public bool ValidarEstado(string estado, decimal montoSolicitado, decimal montoConseguido)
+        {
+            bool result = false;
+
+            result = (estado == "A" || estado == "C");
+
+            if (result && estado == "A")
+            {
+                result = (montoConseguido < montoSolicitado);
+            }
+
+            if (result && estado == "C")
+            {
+                result = (montoConseguido >= montoSolicitado);
+            }
+
+            return result;
+        }
+
     }
 }

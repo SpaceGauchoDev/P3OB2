@@ -8,10 +8,11 @@ using Dominio.Entidades;
 namespace MVC_Presentacion.Models
 {
     public class InversorRegistrationModel
-    {        [Required(ErrorMessage = "Ingrese cedula de identidad!")]
+    {
+        [Required(ErrorMessage = "Ingrese cedula de identidad!")]
         [Display(Name = "CI: ")]
+        [CIValidation(ErrorMessage = "Ingrese CI con número verificador sin puntos ni guiónes.")]
         public string NombreDeUsuario { get; set; }
-
 
         [Required(ErrorMessage = "Ingrese nombre!")]
         [Display(Name = "Nombre: ")]
@@ -24,12 +25,13 @@ namespace MVC_Presentacion.Models
         [Required(ErrorMessage = "Ingrese contraseña!")]
         [Display(Name = "Contraseña: ")]
         [DataType(DataType.Password)]
+        [RegularExpression("^(?=.*[0-1])(?=.*[a-z])(?=.*[A-Z]).{6,}$", ErrorMessage = "Contraseña debe tener como mínimo 1 mayúscula, 1 minúscula, 1 número y 6 caracateres de largo.")]
         public string Pass { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Confirme contraseña!")]
         [Display(Name = "Confirme contraseña: ")]
         [DataType(DataType.Password)]
-        [Compare("Pass")]
+        [Compare("Pass", ErrorMessage = "Las contraseñas ingresadas no coinciden.")]
         public string ConPass { get; set; }
 
         [Required(ErrorMessage = "Ingrese fecha de nacimiento!")]
@@ -38,10 +40,12 @@ namespace MVC_Presentacion.Models
 
         [Required(ErrorMessage = "Ingrese email!")]
         [Display(Name = "Email: ")]
+        [RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", ErrorMessage = "Formato de Email inválido.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Ingrese numero de celular!")]
         [Display(Name = "Celular: ")]
+        [CellValidation(ErrorMessage = "Celular debe ser solo números, empezar con 09 y tener 9 digitos.")]
         public string Cell { get; set; }
 
         [Required(ErrorMessage = "Ingrese monto máximo a inversion por proyecto!")]

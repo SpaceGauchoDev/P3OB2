@@ -129,7 +129,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Connected Services\ServicioSolicitantesRef\Reference.cs">
+    <Compile Include="CellValidation.cs" />
+    <Compile Include="CIValidation.cs" />
+    <Compile Include="Connected Services\ServicioImportacionesRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -151,13 +153,18 @@
     <Compile Include="TiposDeUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\ServicioSolicitantesRef\MVC_Presentacion.ServicioSolicitantesRef.DtoSolicitante.datasource">
+    <Content Include="img_proy2\baubaxTravelJacket.jpg" />
+    <Content Include="Connected Services\ServicioImportacionesRef\MVC_Presentacion.ServicioImportacionesRef.DtoProyecto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion.disco" />
-    <None Include="Connected Services\ServicioSolicitantesRef\configuration91.svcinfo" />
-    <None Include="Connected Services\ServicioSolicitantesRef\configuration.svcinfo" />
-    <None Include="Connected Services\ServicioSolicitantesRef\Reference.svcmap">
+    <Content Include="Connected Services\ServicioImportacionesRef\MVC_Presentacion.ServicioImportacionesRef.DtoSolicitante.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="img_proy2\zombiecideGreenHorde.jpg" />
+    <None Include="Connected Services\ServicioImportacionesRef\ServicioImportacion.disco" />
+    <None Include="Connected Services\ServicioImportacionesRef\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicioImportacionesRef\configuration.svcinfo" />
+    <None Include="Connected Services\ServicioImportacionesRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -165,20 +172,26 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="img_proy2\coolestCooler.jpg" />
+    <Content Include="img_proy2\criticalRoleTheLegendOfVoxMachina.jpg" />
+    <Content Include="img_proy2\explodingKittens.png" />
     <Content Include="favicon.ico" />
+    <Content Include="img_proy2\fidgetCube.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img_proy2\pebbleTimeSmartwatch.jpg" />
+    <Content Include="img_proy2\ponoMusicPlayer.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion.wsdl" />
-    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion.xsd">
+    <None Include="Connected Services\ServicioImportacionesRef\ServicioImportacion.wsdl" />
+    <None Include="Connected Services\ServicioImportacionesRef\ServicioImportacion.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion1.xsd">
+    <None Include="Connected Services\ServicioImportacionesRef\ServicioImportacion1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion2.xsd">
+    <None Include="Connected Services\ServicioImportacionesRef\ServicioImportacion2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -192,6 +205,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="img_proy2\snapmaker2.jpg" />
+    <Content Include="img_proy2\travelTripodByPeakDesign.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -208,10 +223,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\HomeSinRegistrar\VerHomeSinRegistrar.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\InversorRegistration\Index.cshtml" />
     <Content Include="Views\HomeInversor\VerHomeInversor.cshtml" />
     <Content Include="Views\HomeSolicitante\VerHomeSolicitante.cshtml" />
     <Content Include="Views\Common\ImportarUsuarios.cshtml" />
+    <Content Include="Views\Common\ImportarProyectos.cshtml" />
+    <Content Include="Views\InversorRegistration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -243,7 +259,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServicioSolicitantesRef\" />
+    <WCFMetadataStorage Include="Connected Services\ServicioImportacionesRef\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

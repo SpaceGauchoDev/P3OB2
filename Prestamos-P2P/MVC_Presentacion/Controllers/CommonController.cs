@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MVC_Presentacion.ServicioSolicitantesRef;
+using MVC_Presentacion.ServicioImportacionesRef;
 
 namespace MVC_Presentacion.Controllers
 {
@@ -21,7 +21,11 @@ namespace MVC_Presentacion.Controllers
 
         public ActionResult ImportarProyectos()
         {
-            return RedirectToAction("Index", "ImportarProyectos");
+            ServicioImportacionClient servicioProyectosClient = new ServicioImportacionClient();
+            servicioProyectosClient.Open();
+            var proyectos = servicioProyectosClient.ImportarProyectos();
+
+            return View(proyectos);
         }
 
         public ActionResult VolverAHome()

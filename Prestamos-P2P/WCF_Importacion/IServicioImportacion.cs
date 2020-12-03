@@ -20,8 +20,7 @@ namespace WCF_Importacion
         IEnumerable<DtoSolicitante> ImportarSolicitantes();
 
         [OperationContract]
-        int ImportarProyectos();
-
+        IEnumerable<DtoProyecto> ImportarProyectos();
 
         /*
         //TESTING
@@ -44,13 +43,68 @@ namespace WCF_Importacion
     {
         [DataMember]
         public string Nombre { get; set; }
+
         [DataMember]
         public string Apellido { get; set; }
+
         [DataMember]
         public DateTime FechaDeNacimiento { get; set; }
+
         [DataMember]
         public string Email { get; set; }
+
         [DataMember]
         public string Cell { get; set; }
     }
+
+    [DataContract]
+    public class DtoProyecto
+    {
+        [DataMember]
+        public string Estado { get; set; }
+
+        [DataMember]
+        public string TipoDeEquipo { get; set; }
+
+        [DataMember]
+        public string Titulo { get; set; }
+
+        [DataMember]
+        public string Descripcion { get; set; }
+
+        [DataMember]
+        public string ImgURL { get; set; }
+
+        [DataMember]
+        public DateTime FechaDePresentacion { get; set; }
+
+        [DataMember]
+        public int CantidadDeIntegrantes { get; set; }
+
+        [DataMember]
+        public string ExperienciaPersonal { get; set; }
+
+        [DataMember]
+        public int Cuotas { get; set; }
+
+        [DataMember]
+        public decimal PrecioPorCuota { get; set; }
+
+        [DataMember]
+        public decimal MontoSolicitado { get; set; }
+
+        [DataMember]
+        public decimal PorcentajeDeInteres { get; set; }
+
+        [DataMember]
+        public decimal MontoConseguido { get; set; }
+
+        [DataMember]
+        public int IdSolicitante { get; set; }
+    }
+
+
+
+
+
 }

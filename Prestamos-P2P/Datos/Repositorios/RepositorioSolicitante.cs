@@ -43,7 +43,43 @@ namespace Datos.Repositorios
 
         public Solicitante FindById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (Prestamos_P2P_Context db = new Prestamos_P2P_Context())
+                {
+                    return db.Solicitantes.Find(id);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
+        }
+
+        public bool ExistsByEmail(string email)
+        {
+            try
+            {
+                using (Prestamos_P2P_Context db = new Prestamos_P2P_Context())
+                {
+                    var existe = db.Solicitantes.Count(p => p.Email == email);
+
+                    if (existe == 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
         }
 
         public bool Remove(object id)
