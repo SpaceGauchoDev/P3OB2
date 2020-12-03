@@ -4,12 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.1267
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Presentacion", "MVC_Presentacion\MVC_Presentacion.csproj", "{7AAAF423-654A-4771-BCD2-0F4FEFC856CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696} = {DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{83D2DDAD-6BE2-4B34-993C-801570CE3CDB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{6CDABD0E-638C-4077-9E9C-CAF0858F39C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingConsole", "TestingConsole\TestingConsole.csproj", "{E47580D8-F65A-49E2-82A9-CFE608964C66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF_Importacion", "WCF_Importacion\WCF_Importacion.csproj", "{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{E47580D8-F65A-49E2-82A9-CFE608964C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E47580D8-F65A-49E2-82A9-CFE608964C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E47580D8-F65A-49E2-82A9-CFE608964C66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

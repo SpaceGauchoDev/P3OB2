@@ -56,6 +56,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -127,12 +129,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\ServicioSolicitantesRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeInversorController.cs" />
     <Compile Include="Controllers\HomeSinRegistrarController.cs" />
     <Compile Include="Controllers\HomeSolicitanteController.cs" />
-    <Compile Include="Controllers\ImportarProyectosController.cs" />
-    <Compile Include="Controllers\ImportarUsuariosController.cs" />
     <Compile Include="Controllers\InversorRegistrationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -145,6 +151,16 @@
     <Compile Include="TiposDeUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\ServicioSolicitantesRef\MVC_Presentacion.ServicioSolicitantesRef.DtoSolicitante.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion.disco" />
+    <None Include="Connected Services\ServicioSolicitantesRef\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicioSolicitantesRef\configuration.svcinfo" />
+    <None Include="Connected Services\ServicioSolicitantesRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -155,6 +171,16 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion.wsdl" />
+    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioSolicitantesRef\ServicioImportacion2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -183,10 +209,9 @@
     <Content Include="Views\HomeSinRegistrar\VerHomeSinRegistrar.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\InversorRegistration\Index.cshtml" />
-    <Content Include="Views\ImportarUsuarios\Index.cshtml" />
-    <Content Include="Views\ImportarProyectos\Index.cshtml" />
     <Content Include="Views\HomeInversor\VerHomeInversor.cshtml" />
     <Content Include="Views\HomeSolicitante\VerHomeSolicitante.cshtml" />
+    <Content Include="Views\Common\ImportarUsuarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -213,6 +238,12 @@
       <Project>{6cdabd0e-638c-4077-9e9c-caf0858f39c5}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServicioSolicitantesRef\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

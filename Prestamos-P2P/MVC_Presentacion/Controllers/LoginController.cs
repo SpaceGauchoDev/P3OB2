@@ -27,6 +27,13 @@ namespace MVC_Presentacion.Controllers
             inv.NombreDeUsuario = "i";
             inv.Pass = "i";
 
+            // TODOMDA: si un usuario solicitante accede al sitio y aun tiene la contraseña temporal, esta debe ser cambiada
+
+            // TODOMDA: la navegacion de todo el sitio no debe permitr acceder a recurso que no sea valido para el tipo de usuario
+
+            // "Se controlará que no puedan acceder a través de una URL a las funcionalidades no autorizadas. Si se accede al login
+            // a través de un usuario previamente identificado se cerrará su sesión anterior"
+
             if (pLoginData.NombreDeUsuario == sol.NombreDeUsuario && pLoginData.Pass == sol.Pass)
             {
                 // ingresar como solicitante

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVC_Presentacion.ServicioSolicitantesRef;
 
 namespace MVC_Presentacion.Controllers
 {
-    public class HomeSinRegistrarController : Controller
+    public class HomeSinRegistrarController : CommonController
     {
         // GET: HomeSinRegistrar
         public ActionResult Index()
@@ -24,16 +25,6 @@ namespace MVC_Presentacion.Controllers
             return View();
         }
 
-        public ActionResult ImportarUsuarios()
-        {
-            return RedirectToAction("Index", "ImportarUsuarios");
-        }
-
-        public ActionResult ImportarProyectos()
-        {
-            return RedirectToAction("Index", "ImportarProyectos");
-        }
-
         public ActionResult IrARegistrarInversor()
         {
             return RedirectToAction("Index", "InversorRegistration");
@@ -42,13 +33,6 @@ namespace MVC_Presentacion.Controllers
         public ActionResult IrALogin()
         {
             return RedirectToAction("Index", "Login");
-        }
-
-        public ActionResult Logout()
-        {
-            Session["tipoDeUsuario"] = TiposDeUsuario.E_Nav.NoRegistrado;
-            Session["usuario"] = null;
-            return View("VerHomeSinRegistrar");
         }
     }
 }

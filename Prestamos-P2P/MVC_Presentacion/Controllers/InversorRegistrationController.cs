@@ -31,7 +31,7 @@ namespace MVC_Presentacion.Controllers
             datosIngresados.Pass = pRegistrationData.Pass;
             datosIngresados.FechaDeNacimiento = pRegistrationData.FechaDeNacimiento;
 
-            Inversor.ResultadoValidacion resultadoValidacion = inversor.Validar(datosIngresados);
+            Inversor.ResultadoValidacion resultadoValidacion = inversor.ValidarParaPresentacion(datosIngresados);
 
             if (resultadoValidacion.Resultado)
             {

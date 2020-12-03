@@ -51,13 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202012011949141_initDb.cs" />
-    <Compile Include="Migrations\202012011949141_initDb.designer.cs">
-      <DependentUpon>202012011949141_initDb.cs</DependentUpon>
+    <Compile Include="Migrations\202012022332249_initDb.cs" />
+    <Compile Include="Migrations\202012022332249_initDb.designer.cs">
+      <DependentUpon>202012022332249_initDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Prestamos_P2P_Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\RepositorioInversor.cs" />
+    <Compile Include="Repositorios\RepositorioSolicitante.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,8 +72,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202012011949141_initDb.resx">
-      <DependentUpon>202012011949141_initDb.cs</DependentUpon>
+    <Content Include="Archivos\proyectos.txt" />
+    <Content Include="Archivos\usuarios.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012022332249_initDb.resx">
+      <DependentUpon>202012022332249_initDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

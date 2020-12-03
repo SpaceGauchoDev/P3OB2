@@ -56,6 +56,7 @@
     <Compile Include="Entidades\Proyecto.cs" />
     <Compile Include="Entidades\Solicitante.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Interfaces\IRepositorioUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

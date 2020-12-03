@@ -34,10 +34,12 @@
                         Apellido = c.String(nullable: false),
                         Pass = c.String(nullable: false),
                         FechaDeNacimiento = c.DateTime(nullable: false, storeType: "date"),
-                        Email = c.String(nullable: false),
+                        Email = c.String(nullable: false, maxLength: 200),
                         Cell = c.String(nullable: false),
+                        TienePassTemporal = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.IdUsuario);
+                .PrimaryKey(t => t.IdUsuario)
+                .Index(t => t.Email, unique: true);
             
             CreateTable(
                 "dbo.Proyectos",
@@ -72,10 +74,12 @@
                         Apellido = c.String(nullable: false),
                         Pass = c.String(nullable: false),
                         FechaDeNacimiento = c.DateTime(nullable: false, storeType: "date"),
-                        Email = c.String(nullable: false),
+                        Email = c.String(nullable: false, maxLength: 200),
                         Cell = c.String(nullable: false),
+                        TienePassTemporal = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.IdUsuario);
+                .PrimaryKey(t => t.IdUsuario)
+                .Index(t => t.Email, unique: true);
             
         }
         
@@ -84,7 +88,9 @@
             DropForeignKey("dbo.Financiaciones", "IdProyecto", "dbo.Proyectos");
             DropForeignKey("dbo.Proyectos", "IdSolicitante", "dbo.Solicitantes");
             DropForeignKey("dbo.Financiaciones", "IdInversor", "dbo.Inversores");
+            DropIndex("dbo.Solicitantes", new[] { "Email" });
             DropIndex("dbo.Proyectos", new[] { "IdSolicitante" });
+            DropIndex("dbo.Inversores", new[] { "Email" });
             DropIndex("dbo.Financiaciones", new[] { "IdProyecto" });
             DropIndex("dbo.Financiaciones", new[] { "IdInversor" });
             DropTable("dbo.Solicitantes");

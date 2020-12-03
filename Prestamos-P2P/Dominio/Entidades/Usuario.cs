@@ -38,37 +38,32 @@ namespace Dominio.Entidades
         public DateTime FechaDeNacimiento { get; set; }
 
         [Required]
+        [Index(IsUnique = true)]
+        [StringLength(200)] // es necesario definir un largo maximo porque sino EF lo define como de 0 a max chars y eso no está permitido para unique values
         public string Email { get; set; }
 
         [Required]
         public string Cell { get; set; }
 
+        [Required]
+        public bool TienePassTemporal { get; set; }
+
         // metodos usuario 
         // ===============
 
-        /*
-        public virtual bool Validar()
+        public virtual bool ValidarParaRepositorio()
         {
             bool result = false;
 
+            result = ValidarCI(IdUsuario.ToString());
             result = ValidarNombreYApellido(Nombre, Apellido);
-            result = ValidarCI(IdUsuario);
             result = ValidarEmail(Email);
+            result = ValidarCelular(Cell);
+            result = ValidarContrasenia(Pass);
+            result = ValidarEdad(FechaDeNacimiento);
 
             return result;
         }
-
-        public virtual bool Validar(string pNombre, string pApellido, int pCi, string pEmail)
-        {
-            bool result = false;
-
-            result = ValidarNombreYApellido(pNombre, pApellido);
-            result = ValidarCI(pCi);
-            result = ValidarEmail(pEmail);
-
-            return result;
-        }
-        */
 
         public struct DatosValidacion
         {
@@ -87,7 +82,7 @@ namespace Dominio.Entidades
             public bool Resultado { get; set; }
         }
 
-        public virtual ResultadoValidacion Validar(DatosValidacion pDatosValidacion)
+        public virtual ResultadoValidacion ValidarParaPresentacion(DatosValidacion pDatosValidacion)
         {
             ResultadoValidacion result = new ResultadoValidacion();
             bool registroValido = true;
@@ -150,6 +145,21 @@ namespace Dominio.Entidades
                 }
                 registroValido = false;
             }
+
+
+            if (!ValidarContrasenia(pDatosValidacion.Pass))
+            {
+                if (registroValido)
+                {
+                    mensaje += "Contraseña invalida";
+                }
+                else
+                {
+                    mensaje += ", contraseña invalida";
+                }
+                registroValido = false;
+            }
+
 
             result.Mensaje = mensaje;
             result.Resultado = registroValido;
@@ -219,25 +229,6 @@ namespace Dominio.Entidades
             result = Regex.IsMatch(pEmail, regexPattern);
             return result;
         }
-
-        /*
-        public virtual bool ValidarCI(int pCI)
-        {
-            string CIString = pCI.ToString();
-
-            // obtenemos el digito verificador
-            var digitoVerificador = CIString[CIString.Length - 1];
-
-            // obtenemos el numero
-            var primerParte = CIString.Substring(0, CIString.Length - 1);
-
-            // calculamos el digito verificador a partir del numero
-            int digitoCalculado = CalcularDigitoVerificador(primerParte);
-
-            // comparamos el digito verificador provisto con el digito verificador calculado
-            return (Int32.Parse(digitoVerificador.ToString()) == digitoCalculado);
-        }
-        */
 
         public virtual bool ValidarEdad(DateTime pFechaDeNacimiento)
         {

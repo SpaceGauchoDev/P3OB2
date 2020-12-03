@@ -1,5 +1,0 @@
-11|11|A|Manuel|De Armas|1990-02-15 12:00:00 AM|manuel@gmail.com|099879995
-22|22|S|Pikachu|Lopez|1995-02-16 12:00:00 AM|pikachu@gmail.com|099879996
-35402180|Aa1234|S|Sebastian|Sueldo|2000-02-18 12:00:00 AM|sebastian@gmail.com|099879998
-37754761|Aa1234|S|Diego|Cazes|1997-02-19 12:00:00 AM|diego@gmail.com|099879999
-44255447|Aa1234|S|Gordon|Gordoñez|1991-02-17 12:00:00 AM|gordon@gmail.com|099879997

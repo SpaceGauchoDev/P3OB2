@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MVC_Presentacion.Models;
+using MVC_Presentacion.ServicioSolicitantesRef;
 
 namespace MVC_Presentacion.Controllers
 {
-    public class ImportarProyectosController : Controller
+    public class CommonController : Controller
     {
-        // GET: ImportarProyectos
-        public ActionResult Index()
+
+        public ActionResult ImportarUsuarios()
         {
-            return View();
+            ServicioImportacionClient servicioSolicitantesClient = new ServicioImportacionClient();
+            servicioSolicitantesClient.Open();
+            var solicitantes = servicioSolicitantesClient.ImportarSolicitantes();
+
+            return View(solicitantes);
         }
 
-        [HttpPost]
-        public ActionResult Index(FileUploadModel pUploadedFile)
+        public ActionResult ImportarProyectos()
         {
             return RedirectToAction("Index", "ImportarProyectos");
         }
 
         public ActionResult VolverAHome()
         {
-            if (Session["tipoDeUsuario"] == null) {
+            if (Session["tipoDeUsuario"] == null)
+            {
                 return RedirectToAction("Index", "HomeSinRegistrar");
             }
 
@@ -41,5 +45,11 @@ namespace MVC_Presentacion.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
+            Session["tipoDeUsuario"] = TiposDeUsuario.E_Nav.NoRegistrado;
+            Session["usuario"] = null;
+            return RedirectToAction("Index", "HomeSinRegistrar");
+        }
     }
 }

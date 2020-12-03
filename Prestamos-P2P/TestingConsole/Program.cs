@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio.Entidades;
+using Datos.Repositorios;
 
 namespace TestingConsole
 {
@@ -42,9 +43,78 @@ namespace TestingConsole
             ProbarValidarEdad(e4);
             */
 
+            //ParsearFecha("1991-02-17 12:00:00 AM");
+
+            ProbarAgregarInversor();
+
+            //ProbarBuscarInversor(42935324);
+
             Console.WriteLine("End");
             Console.ReadLine();
         }
+
+
+        public static void ProbarBuscarInversor(int idInversor)
+        {
+            RepositorioInversor rI = new RepositorioInversor();
+            Inversor i = rI.FindById(idInversor);
+
+            if (i != null)
+            {
+                Console.WriteLine("Encontró inversor");
+            }
+            else
+            {
+                Console.WriteLine("No encontró inversor");
+            }
+        }
+
+
+
+        public static void ProbarAgregarInversor()
+        {
+            Inversor i = new Inversor
+            {
+                IdUsuario = 31832575,
+                Nombre = "Gordon",
+                Apellido = "Gordoñez",
+                Pass = "Aa1234",
+                FechaDeNacimiento = ConvertirAFecha("1991-02-17"),
+                Email = "gordon@gmail.com",
+                Cell = "099879997",
+                TienePassTemporal = false,
+                MaxInvPorProyecto = (decimal)2000.0,
+                PresentacionInversor = "hola esta es mi presentacion"
+            };
+
+            RepositorioInversor rI = new RepositorioInversor();
+            rI.Add(i);
+        }
+
+
+        public static void ParsearFecha(string fecha)
+        {
+            string anio = fecha.Substring(0, 4);
+            string mes = fecha.Substring(5, 2);
+            string dia = fecha.Substring(8, 2);
+
+            string resultado = "año: " + anio + " ";
+            resultado += "mes: " + mes + " ";
+            resultado += "dia: " + dia;
+
+            Console.WriteLine(resultado);
+        }
+
+        public static DateTime ConvertirAFecha(string fechaString)
+        {
+            int anio = int.Parse(fechaString.Substring(0, 4));
+            int mes = int.Parse(fechaString.Substring(5, 2));
+            int dia = int.Parse(fechaString.Substring(8, 2));
+            DateTime fechaDate = new DateTime(anio, mes, dia);
+
+            return fechaDate;
+        }
+
 
 
         public static void ProbarValidarCelular(string pCell)
