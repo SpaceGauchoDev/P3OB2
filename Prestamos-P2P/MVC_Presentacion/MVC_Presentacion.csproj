@@ -141,7 +141,6 @@
     </Compile>
     <Compile Include="Controllers\CambiarPassController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeInversorController.cs" />
     <Compile Include="Controllers\HomeSinRegistrarController.cs" />
     <Compile Include="Controllers\HomeSolicitanteController.cs" />
@@ -151,7 +150,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CambiarPassModel.cs" />
-    <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Models\InversorRegistrationModel.cs" />
     <Compile Include="Models\LoginDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,9 +221,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\HomeSinRegistrar\VerHomeSinRegistrar.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\HomeInversor\VerHomeInversor.cshtml" />
