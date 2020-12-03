@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingConsole", "TestingCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF_Importacion", "WCF_Importacion\WCF_Importacion.csproj", "{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI_Busquedas", "WebAPI_Busquedas\WebAPI_Busquedas.csproj", "{24C60F6B-F46F-4268-8AD1-D0A469BAB16D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF5BAA09-0336-4B3F-9083-D1BB9AAC3696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24C60F6B-F46F-4268-8AD1-D0A469BAB16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C60F6B-F46F-4268-8AD1-D0A469BAB16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C60F6B-F46F-4268-8AD1-D0A469BAB16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C60F6B-F46F-4268-8AD1-D0A469BAB16D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

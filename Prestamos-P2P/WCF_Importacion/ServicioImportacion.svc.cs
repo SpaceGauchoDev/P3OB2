@@ -142,10 +142,12 @@ namespace WCF_Importacion
                                 ExperienciaPersonal = lineaVec[7].ToString(),
                                 FechaDePresentacion = ConvertirAFecha(lineaVec[8]),
                                 IdSolicitante = int.Parse(lineaVec[9]),
+                                //TODOMDA: verificar que los ultimos valores estan siendo cargados correctamente en el DTO, creo que aparecen en desorden 
+                                // en la vista de proyectos
                                 Cuotas = int.Parse(lineaVec[10]),
-                                PrecioPorCuota = decimal.Parse(lineaVec[10]),
-                                MontoSolicitado = decimal.Parse(lineaVec[11]),
-                                PorcentajeDeInteres = decimal.Parse(lineaVec[12]),
+                                PrecioPorCuota = decimal.Parse(lineaVec[11]),
+                                MontoSolicitado = decimal.Parse(lineaVec[12]),
+                                PorcentajeDeInteres = decimal.Parse(lineaVec[13]),
                                 MontoConseguido = 0 // todos los proyectos se importan como teniendo 0 MontoConseguido
                             };
 

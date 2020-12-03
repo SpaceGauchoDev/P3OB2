@@ -52,7 +52,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <img id="@item.ImgURL" src="~/img_proy2/@item.ImgURL" class="img-responsive col-md-2" />
+            <img id="@item.ImgURL" src="~/img_proy2/@item.ImgURL" height="100"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Titulo)

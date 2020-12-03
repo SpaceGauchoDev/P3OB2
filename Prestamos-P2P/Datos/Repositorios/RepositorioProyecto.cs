@@ -56,5 +56,44 @@ namespace Datos.Repositorios
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Proyecto> Buscar(    DateTime? pFechaInicio,
+                                                DateTime? pFechaFin,
+                                                string pContieneEnTitulo,
+                                                string pContieneEnDescripcion,
+                                                string pEstado,
+                                                decimal? pMontoMenorOIgualA,
+                                                string pTipoDeUsuarioBuscador,
+                                                int? pIdUsuario)
+        {
+            Prestamos_P2P_Context db = new Prestamos_P2P_Context();
+            var proyectos = from p in db.Proyectos select p;
+            if (pFechaInicio != null && pFechaFin != null)
+            {
+                proyectos = proyectos.Where(proy => proy.FechaDePresentacion >= pFechaInicio && proy.FechaDePresentacion <= pFechaFin);
+            }
+            if (!String.IsNullOrEmpty(pContieneEnTitulo))
+            {
+                proyectos = proyectos.Where(proy => proy.Titulo.Contains(pContieneEnTitulo));
+            }
+            if (!String.IsNullOrEmpty(pContieneEnDescripcion))
+            {
+                proyectos = proyectos.Where(proy => proy.Descripcion.Contains(pContieneEnDescripcion));
+            }
+            if (pMontoMenorOIgualA != null)
+            {
+                proyectos = proyectos.Where(proy => proy.MontoSolicitado <= pMontoMenorOIgualA);
+            }
+            if (!String.IsNullOrEmpty(pTipoDeUsuarioBuscador) && pIdUsuario != null)
+            {
+                if (pTipoDeUsuarioBuscador == "solicitante")
+                {
+                    proyectos = proyectos.Where(proy => proy.IdSolicitante == pIdUsuario);
+                }
+            }
+
+            return proyectos.ToList();
+        }
+
     }
 }
