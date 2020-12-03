@@ -53,6 +53,7 @@ namespace MVC_Presentacion.Controllers
         {
             Session["tipoDeUsuario"] = TiposDeUsuario.E_Nav.NoRegistrado;
             Session["usuario"] = null;
+            Session["idUsuario"] = null;
             return RedirectToAction("Index", "HomeSinRegistrar");
         }
     }

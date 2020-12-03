@@ -136,6 +136,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CambiarPassController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeInversorController.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CambiarPassModel.cs" />
     <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Models\InversorRegistrationModel.cs" />
     <Compile Include="Models\LoginDataModel.cs" />
@@ -228,6 +230,7 @@
     <Content Include="Views\Common\ImportarUsuarios.cshtml" />
     <Content Include="Views\Common\ImportarProyectos.cshtml" />
     <Content Include="Views\InversorRegistration\Index.cshtml" />
+    <Content Include="Views\CambiarPass\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

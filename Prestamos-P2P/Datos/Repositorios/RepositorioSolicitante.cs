@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio.Interfaces;
 using Dominio.Entidades;
+using System.Data.Entity;
 
 namespace Datos.Repositorios
 {
@@ -57,6 +58,27 @@ namespace Datos.Repositorios
             }
         }
 
+        public Solicitante LoginAttempt(string solicitanteId, string inversorPass)
+        {
+            Solicitante s = FindById(int.Parse(solicitanteId));
+
+            if (s != null)
+            {
+                if (s.Pass == inversorPass)
+                {
+                    return s;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public bool ExistsByEmail(string email)
         {
             try
@@ -89,7 +111,31 @@ namespace Datos.Repositorios
 
         public bool Update(Solicitante objeto)
         {
-            throw new NotImplementedException();
+            if (objeto != null && objeto.ValidarParaRepositorio())
+            {
+                using (Prestamos_P2P_Context db = new Prestamos_P2P_Context())
+                {
+                    var s = db.Solicitantes.Find(objeto.IdUsuario);
+
+                    if (s == null)
+                    {
+                        return false;
+                    }
+
+                    s.Nombre = objeto.Nombre;
+                    s.Apellido = objeto.Apellido;
+                    s.Pass = objeto.Pass;
+                    s.FechaDeNacimiento = objeto.FechaDeNacimiento;
+                    s.Email = objeto.Email;
+                    s.Cell = objeto.Cell;
+                    s.TienePassTemporal = objeto.TienePassTemporal;
+                    s.ProyectosDelSolicitante = objeto.ProyectosDelSolicitante;
+
+                    db.Entry(s).State = EntityState.Modified;
+                    return db.SaveChanges() > 0;
+                }
+            }
+            return false;
         }
     }
 }
