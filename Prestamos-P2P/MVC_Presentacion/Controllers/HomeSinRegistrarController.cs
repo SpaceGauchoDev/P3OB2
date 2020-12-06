@@ -22,16 +22,50 @@ namespace MVC_Presentacion.Controllers
 
         public ActionResult VerHomeSinRegistrar()
         {
+            /*security check*/
+            if (Session["tipoDeUsuario"] == null)
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+            else if (Session["tipoDeUsuario"].ToString() != TiposDeUsuario.E_Nav.NoRegistrado.ToString())
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+
+
             return View();
         }
 
         public ActionResult IrARegistrarInversor()
         {
+            /*security check*/
+            if (Session["tipoDeUsuario"] == null)
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+            else if (Session["tipoDeUsuario"].ToString() != TiposDeUsuario.E_Nav.NoRegistrado.ToString())
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+
+
             return RedirectToAction("Index", "InversorRegistration");
         }
 
         public ActionResult IrALogin()
         {
+            /*security check*/
+            if (Session["tipoDeUsuario"] == null)
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+            else if (Session["tipoDeUsuario"].ToString() != TiposDeUsuario.E_Nav.NoRegistrado.ToString())
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+
+
+
             return RedirectToAction("Index", "Login");
         }
     }

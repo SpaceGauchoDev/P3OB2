@@ -14,19 +14,14 @@ namespace MVC_Presentacion.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            // "Si se accede al login a través de un usuario previamente identificado se cerrará su sesión anterior"
-            // normalmente el boton no está visible si un usuario està identificado, pero si un usuario identificado accede al login desde url, lo deslogeamos
-
-            if (Session["tipoDeUsuario"] != null)
+            /*security check*/
+            if (Session["tipoDeUsuario"] == null)
             {
-                if (Session["tipoDeUsuario"].ToString() == TiposDeUsuario.E_Nav.Inversor.ToString())
-                {
-                    return RedirectToAction("Logout", "Common");
-                }
-                else if (Session["tipoDeUsuario"].ToString() == TiposDeUsuario.E_Nav.Solicitante.ToString())
-                {
-                    return RedirectToAction("Logout", "Common");
-                }
+                return RedirectToAction("Logout", "Common");
+            }
+            else if (Session["tipoDeUsuario"].ToString() != TiposDeUsuario.E_Nav.NoRegistrado.ToString())
+            {
+                return RedirectToAction("Logout", "Common");
             }
 
             return View();
@@ -35,15 +30,18 @@ namespace MVC_Presentacion.Controllers
         [HttpPost]
         public ActionResult Index(LoginDataModel pLoginData)
         {
+            /*security check*/
+            if (Session["tipoDeUsuario"] == null)
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+            else if (Session["tipoDeUsuario"].ToString() != TiposDeUsuario.E_Nav.NoRegistrado.ToString())
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+
             RepositorioSolicitante rS = new RepositorioSolicitante();
             RepositorioInversor rI = new RepositorioInversor();
-
-            // TODOMDA: si un usuario solicitante accede al sitio y aun tiene la contraseña temporal, esta debe ser cambiada
-
-            // TODOMDA: la navegacion de todo el sitio no debe permitr acceder a recurso que no sea valido para el tipo de usuario
-
-            // "Se controlará que no puedan acceder a través de una URL a las funcionalidades no autorizadas. Si se accede al login
-            // a través de un usuario previamente identificado se cerrará su sesión anterior"
 
             Inversor i = rI.LoginAttempt(pLoginData.NombreDeUsuario, pLoginData.Pass);
             Solicitante s = rS.LoginAttempt(pLoginData.NombreDeUsuario, pLoginData.Pass);

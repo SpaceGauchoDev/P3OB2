@@ -45,7 +45,6 @@ namespace WebAPI_Busquedas.Controllers
         }
         */
 
-        /*
         [HttpGet]
         [Route("busqueda")]
         public IHttpActionResult Buscar([FromUri] Models.BusquedaApiModel datos)
@@ -61,18 +60,30 @@ namespace WebAPI_Busquedas.Controllers
                                         datos.IdUsuario);
             if (resultado != null)
             {
-                return Ok(resultado.Select(p => new Models.ArticuloModel
+                return Ok(resultado.Select(p => new Models.ProyectoModel
                 {
-                    Nombre = p.Nombre,
-                    Precio = p.Precio,
-                    Id = p.Id,
-                    CategoriaAsociada = p.CategoriaAsociada,
-                    Votantes =
-                        p.Votantes
-                        .Select(v => new Models.VotanteModel
+                    Estado = p.Estado,
+                    TipoDeEquipo = p.TipoDeEquipo,
+                    Titulo = p.Titulo,
+                    Descripcion = p.Descripcion,
+                    ImgURL = p.ImgURL,
+                    FechaDePresentacion = p.FechaDePresentacion,
+                    CantidadDeIntegrantes = p.CantidadDeIntegrantes,
+                    ExperienciaPersonal = p.ExperienciaPersonal,
+                    Cuotas = p.Cuotas,
+                    PrecioPorCuota = p.PrecioPorCuota,
+                    MontoSolicitado = p.MontoSolicitado,
+                    PorcentajeDeInteres = p.PorcentajeDeInteres,
+                    MontoConseguido = p.MontoConseguido,
+                    IdSolicitante = p.IdSolicitante,
+
+                    Financiaciones =p. Financiaciones
+                        .Select(f => new Models.FinanciacionModel
                         {
-                            Nombre = v.Nombre,
-                            Id = v.Id
+                            IdFinanciacion = f.IdFinanciacion,
+                            Monto = f.Monto,
+                            Fecha = f.Fecha,
+                            IdInversor = f.IdInversor
                         })
                 }).ToList());
             }
@@ -81,6 +92,5 @@ namespace WebAPI_Busquedas.Controllers
                 return NotFound();
         }
 
-        */
     }
 }

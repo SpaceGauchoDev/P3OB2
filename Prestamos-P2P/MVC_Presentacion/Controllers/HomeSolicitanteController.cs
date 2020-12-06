@@ -11,16 +11,51 @@ namespace MVC_Presentacion.Controllers
     {
         public ActionResult Index()
         {
+            /*security check*/
+            if (Session["tipoDeUsuario"] == null)
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+            else if (Session["tipoDeUsuario"].ToString() != TiposDeUsuario.E_Nav.Solicitante.ToString())
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+
+
+
             return View("VerHomeSolicitante");
         }
 
         public ActionResult VerHomeSolicitante()
         {
+            /*security check*/
+            if (Session["tipoDeUsuario"] == null)
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+            else if (Session["tipoDeUsuario"].ToString() != TiposDeUsuario.E_Nav.Solicitante.ToString())
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+
+
             return View();
         }
 
         public ActionResult BuscarProyectos()
         {
+            /*security check*/
+            if (Session["tipoDeUsuario"] == null)
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+            else if (Session["tipoDeUsuario"].ToString() != TiposDeUsuario.E_Nav.Solicitante.ToString())
+            {
+                return RedirectToAction("Logout", "Common");
+            }
+
+
+
             //TODOMDA: agregar vista de busqueda con filtros para solicitantes
             return RedirectToAction("Index", "BusquedaDeProyectos");
         }
